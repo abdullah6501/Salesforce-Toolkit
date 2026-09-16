@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Salesforce Context Helper",
+  "description": "A Salesforce-aware side panel for inspecting fields, records, permissions, and SOQL.",
+  "version": "0.1.0",
+  "minimum_chrome_version": "114",
+  "permissions": ["sidePanel", "activeTab", "storage", "tabs", "scripting"],
+  "host_permissions": [
+    "https://*.salesforce.com/*",
+    "https://*.force.com/*",
+    "https://*.lightning.force.com/*"
+  ],
+  "action": {
+    "default_title": "Open Salesforce Context Helper"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "panel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.salesforce.com/*",
+        "https://*.force.com/*",
+        "https://*.lightning.force.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["page-bridge.js"],
+      "matches": [
+        "https://*.salesforce.com/*",
+        "https://*.force.com/*",
+        "https://*.lightning.force.com/*"
+      ]
+    }
+  ]
+}

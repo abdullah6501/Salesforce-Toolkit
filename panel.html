@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Salesforce Context Helper</title>
+    <link rel="stylesheet" href="panel.css" />
+  </head>
+  <body>
+    <main class="panel-shell">
+      <header class="hero">
+        <div class="eyebrow">SALESFORCE TOOLKIT</div>
+        <h1 id="title">Context Helper</h1>
+        <p id="subtitle">Open a Salesforce record to begin.</p>
+        <div class="record-context" id="record-context" hidden>
+          <span id="object-badge">Object</span>
+          <button class="record-id" id="record-id" title="Copy record ID">—</button>
+        </div>
+      </header>
+
+      <section aria-labelledby="actions-title">
+        <div class="section-heading"><h2 id="actions-title">Quick Actions</h2><span id="api-status" class="status">Page context</span></div>
+        <div class="action-grid">
+          <button data-action="inspect" class="action-card"><span>⌕</span>Inspect fields</button>
+          <button data-action="copy-id" class="action-card"><span>▣</span>Copy Record ID</button>
+          <button data-action="permissions" class="action-card"><span>◈</span>Check permissions</button>
+          <button data-action="soql" class="action-card"><span>ϟ</span>Generate SOQL</button>
+          <button data-action="related" class="action-card"><span>↗</span>Find related records</button>
+          <button data-action="automation" class="action-card"><span>⌁</span>Debug automation</button>
+          <button data-action="api" class="action-card"><span>⌘</span>Inspect API</button>
+          <button data-action="export" class="action-card"><span>⇩</span>Export data</button>
+        </div>
+      </section>
+
+      <section class="workspace" aria-live="polite">
+        <div id="empty-state" class="empty-state">
+          <div class="empty-icon">☁</div>
+          <p>Navigate to a Salesforce record, then open this panel.</p>
+        </div>
+        <div id="tool-content" hidden></div>
+      </section>
+    </main>
+    <div id="toast" role="status"></div>
+    <script type="module" src="panel.js"></script>
+  </body>
+</html>
